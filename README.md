@@ -20,8 +20,8 @@
 
 ## items テーブル
 
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
+| Column              | Type       | Options           |
+| ------------------- | ---------- | ----------------- |
 | name                | string     | null: false       |
 | comment             | text       | null: false       |
 | category_id         | integer    | null: false       |
@@ -29,37 +29,38 @@
 | delivery_charges_id | integer    | null: false       |
 | area_id             | integer    | null: false       |
 | delivery_date_id    | integer    | null: false       |
-| price               | string     | null: false       |
-| user_id             | references | foreign_key: true |
+| price               | integer    | null: false       |
+| user                | references | foreign_key: true |
 
 ### Association
 
 -belongs_to :user
 -has_one :order
 
-## order テーブル
+## orders テーブル
 
 | Column  | Type       | Options           |
 | ------- | ---------- | ----------------- |
-| user_id | references | foreign_key: true |
-| item_id | references | foreign_key: true |
+| user    | references | foreign_key: true |
+| item    | references | foreign_key: true |
 
 ### Association
 
--belongs_to :users
--belongs_to :items
+-belongs_to :user
+-belongs_to :item
 -has_one :orders_information
 
-## orders_information テーブル
+## order_details テーブル
 
-| Column           | Type    | Options     |
-| ---------------- | --------| ----------- |
-| postal_code      | string  | null: false |
-| prefectures_id   | integer | null: false |
-| municipalities   | string  | null: false |
-| address          | string  | null: false |
-| building_name    | string  | 
-| telephone_number | string  | null: false |
+| Column           | Type       | Options           |
+| ---------------- | ---------- | ----------------- |
+| postal_code      | string     | null: false       |
+| prefectures_id   | integer    | null: false       |
+| municipalities   | string     | null: false       |
+| address          | string     | null: false       |
+| building_name    | string     | 
+| telephone_number | string     | null: false       |
+| order            | references | foreign_key: true |
 
 ### Association
 
