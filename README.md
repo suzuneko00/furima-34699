@@ -2,17 +2,16 @@
 
 ## users テーブル
 
-| Column                | Type   | Options     |
-| --------------------- | ------ | ----------- |
-| nickname              | string | null: false |
-| email                 | string | null: false |
-| password              | string | null: false |
-| password_confirmation | string | null: false |
-| last_name             | string | null: false |
-| first_name            | string | null: false |
-| last_name_kana        | string | null: false |
-| first_name_kana       | string | null: false |
-| birthday              | date   | null: false |
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
+| last_name_kana     | string | null: false |
+| first_name_kana    | string | null: false |
+| birthday           | date   | null: false |
 
 ### Association
 
@@ -21,23 +20,24 @@
 
 ## items テーブル
 
-| Column           | Type   | Options     |
-| ---------------- | ------ | ----------- |
-| name             | string | null: false |
-| comment          | text   | null: false |
-| category         | string | null: false |
-| condition        | string | null: false |
-| delivery_charges | string | null: false |
-| area             | string | null: false |
-| delivery_date    | string | null: false |
-| price            | string | null: false |
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| name                | string     | null: false       |
+| comment             | text       | null: false       |
+| category_id         | integer    | null: false       |
+| condition_id        | integer    | null: false       |
+| delivery_charges_id | integer    | null: false       |
+| area_id             | integer    | null: false       |
+| delivery_date_id    | integer    | null: false       |
+| price               | string     | null: false       |
+| user_id             | references | foreign_key: true |
 
 ### Association
 
--belongs_to :users
--has_many :orders
+-belongs_to :user
+-has_one :order
 
-## orders テーブル
+## order テーブル
 
 | Column  | Type       | Options           |
 | ------- | ---------- | ----------------- |
@@ -54,14 +54,13 @@
 
 | Column           | Type    | Options     |
 | ---------------- | --------| ----------- |
-| card_number      | integer | null: false |
-| expiration_month | date    | null: false |
-| expiration_year  | date    | null: false |
-| security_code    | integer | null: false |
-| postal_code      | integer | null: false |
+| postal_code      | string  | null: false |
+| prefectures_id   | integer | null: false |
+| municipalities   | string  | null: false |
 | address          | string  | null: false |
-| telephone_number | integer | null: false |
+| building_name    | string  | 
+| telephone_number | string  | null: false |
 
 ### Association
 
--belongs_to :orders 
+-belongs_to :order
