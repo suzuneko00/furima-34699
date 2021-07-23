@@ -12,11 +12,14 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :comment
-    validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :delivery_charge_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :area_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :delivery_date_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :price, format: { with: /\A[0-9]+\z/}, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  with_options numericality: { other_than: 1, message: "can't be blank" } do
+    validates :category_id
+    validates :condition_id
+    validates :delivery_charge_id
+    validates :area_id
+    validates :delivery_date_id
+  end
+    validates :price, format: { with: /\A[0-9]+\z/ },
+                      numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   end
 end
