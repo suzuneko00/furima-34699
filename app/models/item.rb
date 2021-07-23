@@ -17,6 +17,6 @@ class Item < ApplicationRecord
     validates :delivery_charge_id, numericality: { other_than: 1 , message: "can't be blank"}
     validates :area_id, numericality: { other_than: 1 , message: "can't be blank"}
     validates :delivery_date_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :price, format: { with: /\A[0-9]+\z/, message: "Half-width number" }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "Out of setting range" }
+    validates :price, format: { with: /\A[0-9]+\z/}, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   end
 end
