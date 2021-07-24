@@ -6,7 +6,7 @@ FactoryBot.define do
     end
     name { 'カメラ' }
     comment { '新品未使用品です。' }
-    price { 25_000 }
+    price { 25000 
     category_id { 2 }
     condition_id { 2 }
     delivery_charge_id { 2 }
